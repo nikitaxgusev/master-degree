@@ -39,3 +39,31 @@ def get_LSTM(input_shape):
     model.compile(loss="categorical_crossentropy", optimizer='adam', metrics=["accuracy"])
 
     return model
+
+def get_conv_LSTM(input_shape):
+    #TODO: make "unique" conv lstm
+    model = Sequential()
+
+    model.add(LSTM(units=128, dropout=0.05, recurrent_dropout=0.35, return_sequences=True, input_shape=input_shape))
+
+    model.add(LSTM(units=32, dropout=0.05, recurrent_dropout=0.35, return_sequences=False))
+
+    model.add(Dense(10, activation="softmax"))
+
+    model.compile(loss="categorical_crossentropy", optimizer='adam', metrics=["accuracy"])
+
+    return model
+
+def get_opt_conv_LSTM(input_shape):
+    #TODO: make "unique" optimaze conv lstm
+    model = Sequential()
+
+    model.add(LSTM(units=128, dropout=0.05, recurrent_dropout=0.35, return_sequences=True, input_shape=input_shape))
+
+    model.add(LSTM(units=32, dropout=0.05, recurrent_dropout=0.35, return_sequences=False))
+
+    model.add(Dense(10, activation="softmax"))
+
+    model.compile(loss="categorical_crossentropy", optimizer='adam', metrics=["accuracy"])
+
+    return model
